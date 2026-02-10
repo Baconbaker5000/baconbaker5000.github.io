@@ -1,0 +1,33 @@
+/* minecraft-box.css */
+
+.minecraft-box {
+  /* Change this to scale everything */
+  --unit: 8px;
+
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keeps it perfectly square */
+  
+  background-color: rgba(16, 0, 16, 0.94);
+
+  /* Cut one unit out of the top-left corner */
+  clip-path: polygon(
+    var(--unit) 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 var(--unit)
+  );
+}
+
+/* Inlaid border */
+.minecraft-box::before {
+  content: "";
+  position: absolute;
+  inset: var(--unit); /* pushes it one unit inward */
+
+  /* One-unit thick border */
+  box-shadow: inset 0 0 0 var(--unit) rgba(36, 0, 94, 0.96);
+
+  pointer-events: none;
+}
