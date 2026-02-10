@@ -1,0 +1,72 @@
+body {
+  background: url(thelakemorning.png) no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding-top: 180px;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.top-image {
+  position: fixed;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: auto;
+  z-index: 1000;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Minecraft-Style Box ===== */
+.glass-box {
+  --unit: 8px; /* Scale this to change "pixel" size */
+  
+  position: relative;
+  padding: calc(var(--unit) * 3); /* inner padding */
+  background-color: rgba(16, 0, 16, 0.94);
+
+  /* Square cutout in the top-left corner (1 "unit") */
+  clip-path: polygon(
+    var(--unit) 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 var(--unit),
+    var(--unit) var(--unit)
+  );
+}
+
+/* Inlaid border */
+.glass-box::before {
+  content: "";
+  position: absolute;
+  inset: var(--unit); /* pushes border inward by one unit */
+  box-shadow: inset 0 0 0 var(--unit) rgba(36, 0, 94, 0.96);
+  pointer-events: none;
+}
+
+.glass-box img {
+  max-width: 100%;
+  border-radius: 0; /* optional: keep square edges for Minecraft look */
+}
+
+.glass-box a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
